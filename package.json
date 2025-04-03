@@ -1,0 +1,23 @@
+{
+  "name": "The-Idle-Game",
+  "version": "1.0.0",
+  "description": "A simple idle game built with Node.js and Express",
+  "main": "src/app.js",
+  "type": "module"
+,
+"scripts": {
+  "start": "node src/app.js",
+  "dev": "nodemon --inspect --env-file=.env src/app.js",
+  "lint": "npx eslint ./src || exit 0",
+  "lint:fix": "npx eslint ./src --fix || exit 0"
+},
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^8.13.1",
+    "nodemon": "^3.1.9"
+  },
+  "Author": "Alex Palm <ap224gy@student.lnu.se>"
+}
