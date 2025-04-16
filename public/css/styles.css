@@ -199,27 +199,6 @@ header ul a:hover {
     margin-top: 10px;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background-color: #111613;
-    padding: 4px;
-    font-size: 12px;
-    line-height: 1.2;
-    left: 0px;
-}
-
-
-footer p {
-    text-align: center;
-    color: #f5f5f5;
-    margin: 0;
-    padding: 6px;
-    background-color: #111613;
-}
-
 
 h1 {
     display: flex;
