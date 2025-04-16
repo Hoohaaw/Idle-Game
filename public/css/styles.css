@@ -3,6 +3,7 @@ html {
     font-family: "Rasa", serif;
     background-color: #353535;
     padding: 0%;
+    margin: 0%;
 }
 
 
@@ -29,45 +30,6 @@ main {
     width: 50%;
 }
 
-header {
-    width: 100%;
-    top: 0%;
-    text-align: center;
-    background-color: #111613;
-    padding: 0;
-    font-size: 24px;
-    line-height: 1.2;
-    position: absolute;
-    left: 0px;
-}
-
-header ul {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    list-style: none;
-    margin: 0;
-    padding: 12px 12px 12px 0;
-}
-
-header ul a {
-    text-decoration: none;
-    color: #f5f5f5;
-    margin: 0 24px;
-    background-color: #111613;
-
-}
-
-header ul a:hover {
-    color: #ffaf38;
-    text-decoration: underline;
-}
-
-.game-menu {
-    display: flex;
-    flex-direction: column;
-}
-
 .page-title {
     display: flex;
     justify-content: center;
@@ -85,21 +47,9 @@ header ul a:hover {
     z-index: -1;
 }
 
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-}
 
-.registration-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-}
+
+
 
 .boss-container {
     display: flex;
@@ -199,15 +149,12 @@ header ul a:hover {
     margin-top: 10px;
 }
 
-
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 64px;
 }
-
-
 
 h2 {
     font-size: 28px;

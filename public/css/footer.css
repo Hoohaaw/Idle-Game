@@ -3,7 +3,6 @@
     bottom: 0;
     width: 100%;
     text-align: center;
-    background-color: #111613;
     font-size: 12px;
     line-height: 1.2;
     left: 0px;
@@ -12,11 +11,12 @@
     align-items: center;
     background-color: #282c34;
     color: aliceblue;
-    height: 40px;
-    border-top: solid 3px #272727;
+    height: 32px;
+    border-top: 2px solid rgb(12, 12, 12);
 }
 
 body {
     margin-bottom: 60px;
 }
+
 
