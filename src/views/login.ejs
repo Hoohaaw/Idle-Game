@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Login</title>
+
+
+    <style>
+        header {
+            display: none;
+        }
+
+        .login-container h2 {
+            color: #F3F2ED;
+            text-align: center;
+        }
+
+        .login-container label {
+            color: #F3F2ED;
+        }
+
+        .login-container {
+            background-color: #111613;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #0000001a;
+            width: 600px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4B4B4B;
+            border-radius: 4px;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #1D2023;
+            border: none;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #F3F2ED;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #171717;
+        }
+    </style>
+</head>
+
+
+<div class="login-container">
+    <h2>Login into your account</h2>
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required style="background-color: #1D2023; color: white;"
+            placeholder="Username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required style="background-color: #1D2023; color: white;"
+            placeholder="Password">
+        <input type="submit" value="Login">
+        <a href="/register">Create account</a>
+    </form>
+</div>
+
+
+
+<body>
+    <img class="background-image" src="<%= randomImage %>" alt="background">
+</body>
+
+</html>

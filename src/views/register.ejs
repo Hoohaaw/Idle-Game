@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Registration</title>
+
+
+
+    <style>
+        header {
+            display: none;
+        }
+
+        .registration-container h2 {
+            color: #F3F2ED;
+            text-align: center;
+        }
+
+        .registration-container label {
+            color: #F3F2ED;
+        }
+
+        .registration-container {
+            background-color: #111613;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+        }
+
+        .registration-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4B4B4B;
+            border-radius: 4px;
+        }
+
+        .registration-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #1D2023;
+            border: none;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #F3F2ED;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+
+        .registration-container input[type="submit"]:hover {
+            background-color: #171717;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registration-container">
+        <h2>Create your account</h2>
+        <form action="/register" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required style="background-color: #1D2023; color: white;"
+                placeholder="Username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required
+                style="background-color: #1D2023; color: white;" placeholder="Password">
+            <input type="submit" value="Create account">
+            <a href="/login">Already have a account?</a>
+        </form>
+    </div>
+</body>
+
+<body>
+    <img class="background-image" src="<%= randomImage %>" alt="background">
+</body>
+
+</html>
