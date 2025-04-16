@@ -20,28 +20,26 @@ export class UserController {
     async loginUser(req, res) {
         const { username, password } = req.body
         await this.getUserFromDatabase({ username })
+
         try {
             const user = await RegisterModel.findOne({ username })
 
             if (!user) {
                 console.log('User not found')
-                return
+                return res.status(404).json({ message: 'User not found' })
             }
             const isPasswordMatch = await bcrypt.compare(password, user.password)
             if (isPasswordMatch) {
-                // Ensure session object exists before setting properties
-                if (!req.session) {
-                    req.session = {}
-                }
                 // creating session with user id & username
                 req.session.user = {
                     id: user._id,
                     username: user.username
                 }
-                console.log('User logged in' + req.session.user)
-                res.redirect('/game')
+                console.log('User logged in ' + JSON.stringify(req.session.user.username))
+                console.log('\n---THIS IS THE REQ.SESSION LOG---\n' + JSON.stringify(req.session))
+                res.redirect('/home')
             } else {
-                res.status(401).json({ message: 'Invalid password' })
+                return res.status(401).json({ message: 'Invalid password' })
             }
         } catch (err) {
             console.log(err.message)

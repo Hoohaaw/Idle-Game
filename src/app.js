@@ -6,6 +6,7 @@
 
 import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
+import session from 'express-session'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { connectToDatabase } from './config/mongoose.js'
@@ -28,6 +29,16 @@ import { router } from './routes/router.js'
     app.set('layout extractScripts', true)
     app.set('layout extractStyles', true)
     app.use(expressLayouts)
+
+    app.use(session({
+      secret: process.env.SESSION_SECRET,  
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+          secure: false,  // set true only if you're using HTTPS
+          maxAge: 1000 * 60 * 60 // 1 hour
+      }
+  }));
 
     // Middleware för att tolka URL-kodade data
     app.use(express.urlencoded({ extended: false }))

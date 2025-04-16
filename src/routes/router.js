@@ -9,10 +9,10 @@ import http from 'node:http'
 
 export const router = express.Router()
 import loginRouter from './login.js';
-
-// import { router as gameRouter } from './game.js'
+import gameRouter from './game.js'
 
 router.use('/', loginRouter)
+router.use('/', gameRouter)
 
 
 
