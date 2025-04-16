@@ -58,4 +58,19 @@ export class UserController {
             console.log(err.message)
         }
     }
+
+    getBackgroundImage() {
+        const images = [
+            "/images/bgs/bg0.jpg",
+            "/images/bgs/bg1.jpg",
+            "/images/bgs/bg2.jpg",
+            "/images/bgs/bg3.jpg",
+            "/images/bgs/bg4.jpg",
+            "/images/bgs/bg5.jpg",
+            "/images/bgs/bg6.jpg",
+            "/images/bgs/bg7.jpg",
+            "/images/bgs/bg8.jpg"
+        ]
+        return images[Math.floor(Math.random() * images.length)]
+    }
 }

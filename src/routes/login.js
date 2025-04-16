@@ -6,19 +6,8 @@ const controller = new UserController()
 
 
 router.get('/login', (req, res) => {
-    const images = [
-        "/images/bgs/bg0.jpg", 
-        "/images/bgs/bg1.jpg",
-        "/images/bgs/bg2.jpg",
-        "/images/bgs/bg3.jpg",
-        "/images/bgs/bg4.jpg",
-        "/images/bgs/bg5.jpg",
-        "/images/bgs/bg6.jpg",
-        "/images/bgs/bg7.jpg",
-        "/images/bgs/bg8.jpg"
-    ]
-    const randomImage = images[Math.floor(Math.random() * images.length)]
-    res.render('login', { randomImage });
+    const backgroundImg = controller.getBackgroundImage()
+    res.render('login', { backgroundImg });
 });
 router.post('/login', async (req, res) => {
     try {
@@ -28,19 +17,8 @@ router.post('/login', async (req, res) => {
     }
 });
 router.get('/register', (req, res) => {
-    const images = [
-        "/images/bgs/bg0.jpg", 
-        "/images/bgs/bg1.jpg",
-        "/images/bgs/bg2.jpg",
-        "/images/bgs/bg3.jpg",
-        "/images/bgs/bg4.jpg",
-        "/images/bgs/bg5.jpg",
-        "/images/bgs/bg6.jpg",
-        "/images/bgs/bg7.jpg",
-        "/images/bgs/bg8.jpg"
-    ]
-    const randomImage = images[Math.floor(Math.random() * images.length)]
-    res.render('register', { randomImage });
+    const backgroundImg = controller.getBackgroundImage()
+    res.render('register', { backgroundImg });
 
 });
 router.post('/register', async (req, res) => {
