@@ -25,7 +25,7 @@ import { router } from './routes/router.js'
     // Ställ in vy-motorn och vyer
     app.set('view engine', 'ejs')
     app.set('views', join(directoryFullName, 'views'))
-    // app.set('layout', join(directoryFullName, 'views', 'layouts', 'default'))
+    app.set('layout', 'layouts/default')
     app.set('layout extractScripts', true)
     app.set('layout extractStyles', true)
     app.use(expressLayouts)
@@ -33,7 +33,7 @@ import { router } from './routes/router.js'
     app.use(session({
       secret: process.env.SESSION_SECRET,  
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       cookie: {
           secure: false,  // set true only if you're using HTTPS
           maxAge: 1000 * 60 * 60 // 1 hour

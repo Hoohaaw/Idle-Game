@@ -29,8 +29,5 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.get('/testRoute', (req, res) => {
-    res.render('TestFolder/testRoute')
-});
 
 export default router;

@@ -1,0 +1,12 @@
+<head>
+  <meta charset="utf-8" />
+  <base href="/">
+  <link rel="stylesheet" href="./css/flash.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<% if (locals.flash) { %>
+<div class="alert alert-<%= flash.type %>">
+  <%= flash.text %>
+</div>
+<% } %>

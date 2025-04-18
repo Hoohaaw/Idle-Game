@@ -25,25 +25,26 @@ export class UserController {
             const user = await RegisterModel.findOne({ username })
 
             if (!user) {
-                console.log('User not found')
-                return res.status(404).json({ message: 'User not found' })
+                req.session.flash = { type: 'error', text: 'Login failed' }
+                // res.status(500).json({ message: err.message })
+                res.redirect('/login')
             }
             const isPasswordMatch = await bcrypt.compare(password, user.password)
             if (isPasswordMatch) {
-                // creating session with user id & username
                 req.session.user = {
                     id: user._id,
                     username: user.username
                 }
-                console.log('User logged in ' + JSON.stringify(req.session.user.username))
-                console.log('\n---THIS IS THE REQ.SESSION LOG---\n' + JSON.stringify(req.session))
+                req.session.flash = { type: 'success', text: 'Welcome ' + user.username + '!' }
                 res.redirect('/home')
             } else {
                 return res.status(401).json({ message: 'Invalid password' })
             }
         } catch (err) {
             console.log(err.message)
-            res.status(500).json({ message: err.message })
+            req.session.flash = { type: 'error', text: 'Login failed' }
+            // res.status(500).json({ message: err.message })
+            res.redirect('/login')
         }
     }
 

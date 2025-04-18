@@ -9,7 +9,9 @@ const router = express.Router();
 // const controller = new GameController()
 
 router.get('/home', authUser, (req, res) => {
-    res.render('./home/dashboard', { user: req.session.user.username });
+    res.render('./game/dashboard', { 
+        user: req.session.user.username,
+        id: req.session.user.id,});
 });
 
 // router.get('/statistics', async (req, res) => {
@@ -42,10 +44,18 @@ router.get('/home', authUser, (req, res) => {
 
 // router.get('/boss', (req, res) => {
 //     res.render('boss');
-// });
+// }); 
 
-// router.get('/upgrade', (req, res) => {
-//     res.render('upgrade');
-// });
+router.get('/shop', authUser, (req, res) => { res.render('./game/shop');});
+router.get('/statistics', authUser,(req, res) => { res.render('./game/statistics', { user: req.session.user.username });});
+router.get('/upgrade', authUser,(req, res) => { res.render('./game/upgrade');});
+router.get('/talents', authUser,(req, res) => { res.render('./game/talents');});
+router.get('/team', authUser,(req, res) => { res.render('./game/team');});
+router.get('/inventory', authUser,(req, res) => { res.render('./game/inventory');});
+router.get('/crafting', authUser,(req, res) => { res.render('./game/crafting');});
+router.get('/mines', authUser,(req, res) => { res.render('./game/mines');});
+router.get('/blessings', authUser,(req, res) => { res.render('./game/blessings');});
+router.get('/transcendence', authUser,(req, res) => { res.render('./game/transcendence');});
+
 
 export default router;
