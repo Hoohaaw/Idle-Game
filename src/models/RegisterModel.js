@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 
 const registerSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true, minlength: [3, "The username must be atleast 3 characters."], maxlength: [30, "The username must be at most 20 characters."] },
-    password: { type: String, required: true, minlength: [8, "The password must be atleast 8 characters."] },
+    password: { type: String, required: true, minlength: [8, "The password must be atleast 8 characters."], maxlength: [80, "The password must be at most 80 characters."] },
     attack: { type: Number, required: true, default: 10 },
     attackPercent: { type: Number, required: true, default: 0 },
     speed: { type: Number, required: true, default: 0 },

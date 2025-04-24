@@ -32,6 +32,11 @@ export class UserController {
                 return res.status(400).redirect('/register')
             }
 
+            if (password.length > 80) {
+                req.session.flash = { type: 'error', text: 'Password must be at most 80 characters long' }
+                return res.status(400).redirect('/register')
+            }
+
             const newUser = new RegisterModel({ username, password })
             await newUser.save()
             req.session.flash = { type: 'success', text: 'User created successfully!' }
