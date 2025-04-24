@@ -25,9 +25,8 @@ export class UserController {
             const user = await RegisterModel.findOne({ username })
 
             if (!user) {
-                req.session.flash = { type: 'error', text: 'Login failed' }
-                // res.status(500).json({ message: err.message })
-                res.redirect('/login')
+                req.session.flash = { type: 'error', text: 'Invalid login credentials' }
+                return res.status(303).redirect('/login')
             }
             const isPasswordMatch = await bcrypt.compare(password, user.password)
             if (isPasswordMatch) {
@@ -36,15 +35,14 @@ export class UserController {
                     username: user.username
                 }
                 req.session.flash = { type: 'success', text: 'Welcome ' + user.username + '!' }
-                res.redirect('/home')
+               return res.status(303).redirect('/home')
             } else {
-                return res.status(401).json({ message: 'Invalid password' })
+                req.session.flash = { type: 'error', text: 'Invalid login credentials' }
+                return res.status(303).redirect('/login')
             }
         } catch (err) {
-            console.log(err.message)
-            req.session.flash = { type: 'error', text: 'Login failed' }
-            // res.status(500).json({ message: err.message })
-            res.redirect('/login')
+            req.session.flash = { type: 'error', text: 'Invalid login credentials' }
+            res.status(303).redirect('/login')
         }
     }
 

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory</title>
+</head>
+
+<style>
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --text-light: #f4f4f4;
+  --text-muted: #e8e8e8;
+  --accent: #E6CC80;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  color: var(--accent);
+}
+
+h3 {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.inventory-container {
+  margin: 5% auto;
+  max-width: 1080px;
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.inventory-section {
+  background-color: #1c1c1c;
+  padding: 24px;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.item-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.item-list li {
+  height: 40px;
+  min-width: 40px;
+  background-color: #2a2a2a;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.item-list li:hover {
+  transform: scale(1.05);
+  background-color: #333;
+  color: var(--accent);
+}
+
+.gear-category {
+  margin-top: 20px;
+}
+
+.gear-category .item-list {
+  padding: 0;
+  margin: 0;
+  gap: 6px;
+}
+
+.gear-category .item-list li {
+  height: 64px;
+  min-width: 64px;
+  background-color: #2a2a2a;
+  padding: 0;
+  margin: 0;
+}
+
+
+</style>
+<body>
+  <div class="inventory-container">
+    <section class="inventory-section">
+      <h2>Currencies</h2>
+      <ul class="item-list">
+        <li>Copper: 1982</li>
+        <li>Silver: 752</li>
+        <li>Gold: 117</li>
+        <li>Platinum: 64</li>
+      </ul>
+    </section>
+
+    <section class="inventory-section">
+      <h2>Resources</h2>
+      <ul class="item-list">
+        <li>Wood: 832</li>
+        <li>Coal: 431</li>
+        <li>Bronze: 211</li>
+        <li>Iron: 91</li> 
+        <li>Gold: 13</li>
+      </ul>
+    </section>
+
+    <section class="inventory-section gear-section">
+      <h2>Gear</h2>
+
+      <div class="gear-category">
+        <h3>Common</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Uncommon</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Rare</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+          <!-- <li>Item</li> -->
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Epic</h3>
+        <ul class="item-list">
+          <li>Item</li>
+          <!-- <li>Item</li><li>Item</li><li>Item</li><li>Item</li> -->
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Legendary</h3>
+        <ul class="item-list">
+          <!-- <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li> -->
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Artifact</h3>
+        <ul class="item-list">
+          <!-- <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li> -->
+        </ul>
+      </div>
+
+    </section>
+  </div>
+</body>
+</html>

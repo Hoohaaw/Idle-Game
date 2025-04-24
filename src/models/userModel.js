@@ -6,31 +6,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    attack: {
-        type: Number,
-        required: true
-    },
-    attackPercent: {
-        type: Number,
-        required: true
-    },
-    speed: {
-        type: Number,
-        required: true
-    },
-    crit: {
-        type: Number,
-        required: true
-    },
-    critDamage: {
-        type: Number,
-        required: true
-    },
     coins: {
-        type: Number,
-        required: true
-    },
-    experience: {
         type: Number,
         required: true
     },

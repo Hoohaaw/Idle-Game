@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop</title>
+</head>
+
+
+<style>
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --text-light: #f0f0f0;
+    --text-muted: #b0b0b0;
+    --accent: #E6CC80; /* gold-like */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-light);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.intro-message {
+    text-align: center;
+    line-height: 1.5;
+    padding: 16px;
+    margin: 20px 0;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background-color: var(--bg-card);
+    color: var(--accent);
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.shop {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.shopkeep {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    border: 3px solid var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.shop-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.shop-items li {
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.shop-items li:hover {
+    transform: scale(1.02);
+    border-color: #E6CC80;
+}
+
+.shop-items li h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.shop-items li p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+</style>
+
+<body>
+
+    <main>
+        <h2 class="intro-message">Welcome to the Shop! <br> Here you can exchange coins for items</h2>
+        <div class="shop">
+            <img class="shopkeep" src="images/shopkeepers/elf_male.jpg" alt="Shopkeeper">
+
+            <ul class="shop-items">
+                <% items.forEach(item=> { %>
+                    <li>
+                        <h3>
+                            <%= item.name %>
+                        </h3>
+                        <p>Price: <%= item.price %>
+                        </p>
+                        <p>Rarity: <%= item.rarity %>
+                        </p>
+                        <p>Stat: <%= item.stat %>
+                        </p>
+                    </li>
+
+                    <% }) %>
+            </ul>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upgrade</title>
+  <style>
+    :root {
+      --primary: #2f2f2f;
+      --accent: #E6CC80;
+      --light-text: #f0f0f0;
+      --bg: #121212;;
+      --section-bg: #1e1e1e;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--light-text);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2, h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .upgrade-section {
+      background-color: var(--section-bg);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .upgrade-item-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .upgrade-item {
+      width: 84px;
+      height: 84px;
+      background-color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .upgrade-item h3 {
+      background-color: #212121;
+      color: var(--light-text);
+      padding: 4px 8px;
+      font-weight: normal;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .upgrade-arrow {
+      font-size: 24px;
+    }
+
+    .upgrade-button {
+      margin-top: 16px;
+      padding: 12px 24px;
+      background-color: var(--primary);
+      color: var(--light-text);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .upgrade-button:hover {
+      background-color: #444;
+    }
+
+    .gear-section {
+      background-color: var(--section-bg);
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .gear-category {
+      margin-bottom: 24px;
+    }
+
+    .gear-category h3 {
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .item-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .item-list li {
+      background-color: #000;
+      color: var(--accent);
+      padding: 8px 12px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      min-width: 40px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .upgrade-item-container {
+        flex-direction: column;
+      }
+
+      .upgrade-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="upgrade-section" aria-label="Upgrade Items">
+      <h2>Upgrade Item</h2>
+      <div class="upgrade-item-container">
+        <div class="upgrade-item">
+          <h3>5X</h3>
+        </div>
+        <div class="upgrade-arrow" aria-hidden="true">→</div>
+        <div class="upgrade-item"></div>
+      </div>
+      <button class="upgrade-button" aria-label="Upgrade Selected Item">Upgrade</button>
+    </section>
+
+    <section class="gear-section" aria-label="Gear Inventory">
+      <h2>Gear</h2>
+
+      <!-- Repeatable category block -->
+      <div class="gear-category">
+        <h3>Common</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Uncommon</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Rare</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Epic</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Legendary</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+
+      <div class="gear-category">
+        <h3>Artifact</h3>
+        <ul class="item-list">
+          <li>Item</li><li>Item</li><li>Item</li><li>Item</li><li>Item</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
