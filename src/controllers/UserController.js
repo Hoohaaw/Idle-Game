@@ -6,14 +6,39 @@ export class UserController {
     async createUser(req, res) {
         try {
             const { username, password } = req.body
-            const newUser = new RegisterModel({ username, password })
-            console.log(newUser)
+       
+            if (!username || !password) {
+                req.session.flash = { type: 'error', text: 'Please fill in all fields' }
+                return res.status(400).redirect('/register')
+            }
+            const existingUser = await RegisterModel.findOne({ username })
+            if (existingUser) {
+                req.session.flash = { type: 'error', text: 'Username already exists' }
+                return res.status(400).redirect('/register')
+            }
 
+            if (username.length < 3) {
+                req.session.flash = { type: 'error', text: 'Username must be at least 3 characters long' }
+                return res.status(400).redirect('/register')
+            }
+
+            if (username.length > 30) {
+                req.session.flash = { type: 'error', text: 'Username must be at most 30 characters long' }
+                return res.status(400).redirect('/register')
+            }
+
+            if (password.length <8) {
+                req.session.flash = { type: 'error', text: 'Password must be at least 8 characters long' }
+                return res.status(400).redirect('/register')
+            }
+
+            const newUser = new RegisterModel({ username, password })
             await newUser.save()
-            res.status(201).json(newUser)
+            req.session.flash = { type: 'success', text: 'User created successfully!' }
+            return res.status(201).redirect('/login')
         } catch (err) {
-            console.log(err.message)
-            res.status(500).json({ message: err.message })
+            req.session.flash = { type: 'error', text: 'Error creating user' }
+            return res.status(500).redirect('/register')
         }
     }
 
