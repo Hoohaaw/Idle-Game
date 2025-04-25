@@ -3,7 +3,7 @@ function authUser(req, res, next) {
         // res.status(200).send('Authorized')
        next();
     } else {
-        req.session.flash = { type: 'danger', text: 'Not authorized' }
+        req.session.flash = { type: 'danger', text: 'Not authorized, try to login!' }
         res.redirect('/login')
         // res.status(401).json({ message: 'Not authorized' })
      

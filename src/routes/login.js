@@ -5,10 +5,17 @@ const router = express.Router();
 const controller = new UserController()
 
 
+router.get('/', (req, res) => {
+    const backgroundImg = controller.getBackgroundImage()
+    res.render('login', { backgroundImg });
+});
+
 router.get('/login', (req, res) => {
     const backgroundImg = controller.getBackgroundImage()
     res.render('login', { backgroundImg });
 });
+
+
 router.post('/login', async (req, res) => {
     try {
         await controller.loginUser(req, res)
