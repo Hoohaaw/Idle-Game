@@ -1,0 +1,108 @@
+:root {
+  --bg: #1e1e1e;
+  --panel: #2a2a2a;
+  --accent: #E6CC80;
+  --text: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+#dashboard-container {
+  width: 1080px;
+  height: 720px;
+  margin: auto;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 12px #000;
+}
+
+#missions,
+#menu {
+  width: 20%;
+  height: 100%;
+  background-color: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: var(--accent);
+  box-shadow: inset 0 0 6px #000;
+}
+
+#dashboard {
+  width: 60%;
+  height: 100%;
+  background-color: var(--panel);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 10px;
+}
+
+#dashboard button {
+  padding: 12px;
+  margin: 4px 0;
+  width: 240px;
+  background-color: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+#dashboard button:hover {
+  background-color: #333;
+}
+
+#world-pagination {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#world-pagination button {
+  width: 64px;
+  height: 64px;
+  font-size: 20px;
+  background-color: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#world-pagination button:hover {
+  background-color: #333;
+}
+
+@media (max-width: 1100px) {
+  #dashboard-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  #missions,
+  #menu,
+  #dashboard {
+    width: 100%;
+    height: auto;
+  }
+
+  #dashboard {
+    align-items: center;
+  }
+}
