@@ -18,6 +18,7 @@
     "express-session": "^1.18.1",
     "mongoose": "^8.13.1",
     "nodemon": "^3.1.9",
+    "serve-favicon": "^2.5.0",
     "vite": "^6.2.5"
   },
   "Author": "Alex Palm <ap224gy@student.lnu.se>"
