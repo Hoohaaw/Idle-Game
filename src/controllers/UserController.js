@@ -2,50 +2,41 @@ import { RegisterModel } from '../models/RegisterModel.js'
 import bcrypt from 'bcrypt'
 
 export class UserController {
-
-    async createUser(req, res) {
+    async createUser(req, res) { // Create a new user and save it to the database
         try {
-            const { username, password } = req.body
-       
-            if (!username || !password) {
-                req.session.flash = { type: 'error', text: 'Please fill in all fields' }
-                return res.status(400).redirect('/register')
-            }
-            const existingUser = await RegisterModel.findOne({ username })
-            if (existingUser) {
-                req.session.flash = { type: 'error', text: 'Username already exists' }
-                return res.status(400).redirect('/register')
-            }
-
-            if (username.length < 3) {
-                req.session.flash = { type: 'error', text: 'Username must be at least 3 characters long' }
-                return res.status(400).redirect('/register')
-            }
-
-            if (username.length > 30) {
-                req.session.flash = { type: 'error', text: 'Username must be at most 30 characters long' }
-                return res.status(400).redirect('/register')
-            }
-
-            if (password.length <8) {
-                req.session.flash = { type: 'error', text: 'Password must be at least 8 characters long' }
-                return res.status(400).redirect('/register')
-            }
-
-            if (password.length > 80) {
-                req.session.flash = { type: 'error', text: 'Password must be at most 80 characters long' }
-                return res.status(400).redirect('/register')
-            }
-
-            const newUser = new RegisterModel({ username, password })
-            await newUser.save()
-            req.session.flash = { type: 'success', text: 'User created successfully!' }
-            return res.status(201).redirect('/login')
+          const { username, password } = req.body;
+          await this.validateUserInput(username, password);
+      
+          const newUser = new RegisterModel({ username, password });
+          await newUser.save();
+      
+          req.session.flash = { type: 'success', text: 'User created successfully!' };
+          return res.status(201).redirect('/login');
         } catch (err) {
-            req.session.flash = { type: 'error', text: 'Error creating user' }
-            return res.status(500).redirect('/register')
+          req.session.flash = { type: 'error', text: err.message || 'Error creating user' };
+          return res.status(400).redirect('/register');
         }
-    }
+      }
+      
+      async validateUserInput(username, password) { // Validate user input before creating a new user
+        if (!username || !password) {
+          throw new Error('Please fill in all fields');
+        }
+      
+        if (username.length < 3 || username.length > 30) {
+          throw new Error('Username must be between 3 and 30 characters');
+        }
+      
+        if (password.length < 8 || password.length > 80) {
+          throw new Error('Password must be between 8 and 80 characters');
+        }
+      
+        const existingUser = await RegisterModel.findOne({ username });
+        if (existingUser) {
+          throw new Error('Username already exists');
+        }
+      }
+      
 
     async loginUser(req, res) {
         const { username, password } = req.body
