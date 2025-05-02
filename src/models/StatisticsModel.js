@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const statisticsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Register',
         unique: true, 
     },
     timePlayed: { type: Number, default: 0 }, // in seconds

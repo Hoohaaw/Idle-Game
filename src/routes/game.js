@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import mongoose from 'mongoose';
 import  authUser from '../middleware/auth.js';
 import { shopItems } from '../js/shop.js';
 import { ResourceModel } from '../models/ResourceModel.js';
@@ -47,7 +48,9 @@ async function getInventoryById(userId) {
     }
 }
 async function getStatisticsById(userId) {
-    const statistics = await StatisticsModel.findOne({ user: userId });
+    const statistics = await StatisticsModel.findOne({ user: new mongoose.Types.ObjectId(userId) });
+    // console.log('User ID:', user.id, typeof user.id);
+
     if (!statistics) {
         throw new Error('Statistics not found for user ID: ' + userId);
     }
