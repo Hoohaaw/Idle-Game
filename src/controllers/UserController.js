@@ -67,6 +67,7 @@ export class UserController {
                     id: user._id,
                     username: user.username
                 }
+                console.log("Session from Controller:", req.session)
                 req.session.flash = { type: 'success', text: 'Welcome ' + user.username + '!' }
                return res.status(303).redirect('/home')
             } else {
