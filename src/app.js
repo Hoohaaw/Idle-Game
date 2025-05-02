@@ -7,10 +7,13 @@
 import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
 import session from 'express-session'
+import MongoStore from 'connect-mongo'
+import mongoose from 'mongoose'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { connectToDatabase } from './config/mongoose.js'
 import { router } from './routes/router.js'
+
 
   try {
     // Anslut till databasen
@@ -30,15 +33,23 @@ import { router } from './routes/router.js'
     app.set('layout extractStyles', true)
     app.use(expressLayouts)
 
+    
+
     app.use(session({
-      secret: process.env.SESSION_SECRET,  
+      secret: 'yourSecret', // replace with a strong secret and keep it in .env
       resave: false,
-      saveUninitialized: true,
+      saveUninitialized: false,
+      store: MongoStore.create({
+        client: mongoose.connection.getClient(), // use the existing Mongoose client
+        collectionName: 'sessions',
+        ttl: 14 * 24 * 60 * 60 // optional: session lifetime in seconds (14 days)
+      }),
       cookie: {
-          secure: false,  // set true only if you're using HTTPS
-          maxAge: 1000 * 60 * 60 // 1 hour
+        secure: process.env.NODE_ENV === 'production', // send only over HTTPS in production
+        httpOnly: true,
+        maxAge: 14 * 24 * 60 * 60 * 1000 // optional: same duration in ms
       }
-  }));
+    }));
 
     // Middleware för att tolka URL-kodade data
     app.use(express.urlencoded({ extended: false }))
