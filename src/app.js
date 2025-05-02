@@ -33,21 +33,19 @@ import { router } from './routes/router.js'
     app.set('layout extractStyles', true)
     app.use(expressLayouts)
 
-    
-
     app.use(session({
-      secret: 'yourSecret', // replace with a strong secret and keep it in .env
+      secret: process.env.SESSION_SECRET, 
       resave: false,
       saveUninitialized: false,
       store: MongoStore.create({
-        client: mongoose.connection.getClient(), // use the existing Mongoose client
+        client: mongoose.connection.getClient(), 
         collectionName: 'sessions',
-        ttl: 14 * 24 * 60 * 60 // optional: session lifetime in seconds (14 days)
+        ttl: 14 * 24 * 60 * 60 
       }),
       cookie: {
-        secure: process.env.NODE_ENV === 'production', // send only over HTTPS in production
+        secure: process.env.NODE_ENV === 'production', 
         httpOnly: true,
-        maxAge: 14 * 24 * 60 * 60 * 1000 // optional: same duration in ms
+        maxAge: 14 * 24 * 60 * 60 * 1000
       }
     }));
 
