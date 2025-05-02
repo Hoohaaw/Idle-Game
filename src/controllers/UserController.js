@@ -1,4 +1,7 @@
 import { RegisterModel } from '../models/RegisterModel.js'
+import { ResourceModel } from '../models/ResourceModel.js'
+import { StatisticsModel } from '../models/StatisticsModel.js'
+import { InventoryModel } from '../models/InventoryModel.js'
 import bcrypt from 'bcrypt'
 
 export class UserController {
@@ -9,6 +12,15 @@ export class UserController {
       
           const newUser = new RegisterModel({ username, password });
           await newUser.save();
+
+          const resources = new ResourceModel({ user: newUser._id });
+          await resources.save();
+
+          const stats = new StatisticsModel({ user: newUser._id });
+          await stats.save();
+
+          const inventory = new InventoryModel({ user: newUser._id });
+          await inventory.save();
       
           req.session.flash = { type: 'success', text: 'User created successfully!' };
           return res.status(201).redirect('/login');

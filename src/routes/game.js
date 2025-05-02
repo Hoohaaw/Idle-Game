@@ -1,8 +1,9 @@
 import express, { Router } from 'express';
-// import GameController from '../controllers/GameController';
-// import { shopItems } from '../src/shop.js';
 import  authUser from '../middleware/auth.js';
 import { shopItems } from '../js/shop.js';
+import { ResourceModel } from '../models/ResourceModel.js';
+import { InventoryModel } from '../models/InventoryModel.js';
+import { StatisticsModel } from '../models/StatisticsModel.js';
 
 
 
@@ -27,7 +28,32 @@ router.get('/shop', (req, res) => { const items = shopItems(); res.render('./gam
 //         id: req.session.user.id,});
 // });
 // router.get('/shop', authUser, (req, res) => { const items = shopItems(); res.render('./game/shop', { items });});
-router.get('/statistics', authUser,(req, res) => { res.render('./game/statistics', { user: req.session.user.username });});
+router.get('/statistics', authUser,async (req, res) => { 
+    const user = req.session.user;
+    const statistics = await getStatisticsById(user.id);
+    res.render('./game/statistics', { user, statistics });
+});
+
+async function getResourcesById(userId) {
+    const resources = await ResourceModel.findOne({ user: userId });
+    if (!resources) {
+        throw new Error('Resources not found for user ID: ' + userId);
+    }
+}
+async function getInventoryById(userId) {
+    const inventory = await InventoryModel.findOne({ user: userId });
+    if (!inventory) {
+        throw new Error('Inventory not found for user ID: ' + userId);
+    }
+}
+async function getStatisticsById(userId) {
+    const statistics = await StatisticsModel.findOne({ user: userId });
+    if (!statistics) {
+        throw new Error('Statistics not found for user ID: ' + userId);
+    }
+    console.log(statistics);
+    return statistics;
+}
 // router.get('/upgrade', authUser,(req, res) => { res.render('./game/upgrade');});
 router.get('/talents', authUser,(req, res) => { res.render('./game/talents');});
 router.get('/team', authUser,(req, res) => { res.render('./game/team');});

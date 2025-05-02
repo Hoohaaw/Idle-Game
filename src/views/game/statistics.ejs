@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/css/statistics.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User statistics</title>
+
+</head>
+
+<body>
+
+    <table class="statistics-container">
+        <h3><%= user.username %> Statistics</h3>
+      
+        <table class="missions-table">
+          <h3>Missions</h3>
+            <!-- Time Stats -->
+            <tr><td>Missions completed</td><td><%= statistics.missionsCompleted %></td></tr>
+            <tr><td>Total time on missions</td><td><%= statistics.timeOnMission %> mins</td></tr>
+            <tr><td>Total time in mines</td><td><%= statistics.timeInMines %> mins</td></tr>
+      </table>
+      <table class="resources-table">
+        <h3>Resources</h3>
+            <!-- Resource Stats -->
+            <tr><td>Total copper earned</td><td><%= statistics.copperEarned %></td></tr>
+            <tr><td>Total silver earned</td><td><%= statistics.silverEarned %></td></tr>
+            <tr><td>Total gold earned</td><td><%= statistics.goldEarned %></td></tr>
+            <tr><td>Total platinum earned</td><td><%= statistics.platinumEarned %></td></tr>
+            <tr><td>Total wood earned</td><td><%= statistics.woodEarned %></td></tr>
+            <tr><td>Total coal earned</td><td><%= statistics.coalEarned %></td></tr>
+            <tr><td>Total stone earned</td><td><%= statistics.stoneEarned %></td></tr>
+            <tr><td>Total bronze earned</td><td><%= statistics.bronzeEarned %></td></tr>
+            <tr><td>Total iron earned</td><td><%= statistics.ironEarned %></td></tr>
+      </table>
+        <table class="gear-table">
+            <h3>Gear</h3>
+            <!-- Gear Stats -->
+            <tr><td>Gear pieces found</td><td><%= statistics.gearFound %></td></tr>
+            <tr><td>Upgrades made</td><td><%= statistics.upgradesDone %></td></tr>
+            <tr><td>Common gear pieces found</td><td><%= statistics.commonItemsFound %></td></tr>
+            <tr><td>Uncommon gear pieces found</td><td><%= statistics.UncommanItemsFound %></td></tr>
+            <tr><td>Rare gear pieces found</td><td><%= statistics.rareItemsFound %></td></tr>
+            <tr><td>Epic gear pieces found</td><td><%= statistics.epicItemsFound %></td></tr>
+            <tr><td>Legendary gear pieces found</td><td><%= statistics.legendaryItemsFound %></td></tr>
+            <tr><td>Artifact gear pieces found</td><td><%= statistics.ArtifactsFound %></td></tr>
+        </table>
+      </div>
+      
+    <script src="/js/statistics-script.js"></script>
+</body>
