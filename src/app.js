@@ -6,13 +6,12 @@
 
 import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
-import session from 'express-session'
-import MongoStore from 'connect-mongo'
-import mongoose from 'mongoose'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { connectToDatabase } from './config/mongoose.js'
 import { router } from './routes/router.js'
+import cookieParser from 'cookie-parser'
+import { flashMiddleware } from './middleware/flash.js'
 
 
   try {
@@ -33,39 +32,14 @@ import { router } from './routes/router.js'
     app.set('layout extractStyles', true)
     app.use(expressLayouts)
 
-    app.use(session({
-      secret: process.env.SESSION_SECRET, 
-      resave: false,
-      saveUninitialized: false,
-      store: MongoStore.create({
-        client: mongoose.connection.getClient(), 
-        collectionName: 'sessions',
-        ttl: 14 * 24 * 60 * 60 
-      }),
-      cookie: {
-        secure: process.env.NODE_ENV === 'production', 
-        httpOnly: true,
-        maxAge: 14 * 24 * 60 * 60 * 1000
-      }
-    }));
-
     // Middleware för att tolka URL-kodade data
     app.use(express.urlencoded({ extended: false }))
 
+    app.use(cookieParser())
+    app.use(flashMiddleware)
+
     // Servera statiska filer
     app.use(express.static(join(directoryFullName, '..', 'public')))
-
-    // Middleware för sessioner (om det används)
-    // app.use(session({ secret: 'hemlighet', resave: false, saveUninitialized: true }))
-
-    // Middleware för att hantera flash-meddelanden
-    app.use((req, res, next) => {
-      if (req.session && req.session.flash) {
-        res.locals.flash = req.session.flash
-        delete req.session.flash
-      }
-      next()
-    })
 
     // Middleware för att skicka bas-URL till vyer
     app.use((req, res, next) => {

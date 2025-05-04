@@ -6,7 +6,7 @@
 }
 
 body {
-  margin: 0;
+  margin-top: 200px;
   font-family: Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);

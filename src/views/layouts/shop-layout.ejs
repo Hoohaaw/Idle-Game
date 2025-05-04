@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rasa:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/shop.css">
+  <title>Shop-layout</title>
+
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="upgrade-wrapper">
+    <%- include('../partials/flash') %>
+    <section class="upgrade-content">
+      <%- body %>
+    </section>
+  </div>
+
+  <%- include('../partials/footer') %>
+  <script src="/js/upgrade-script.js"></script>
+</body>
+</html>
