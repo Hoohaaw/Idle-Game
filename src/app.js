@@ -51,12 +51,12 @@ import { flashMiddleware } from './middleware/flash.js'
     app.use('/', router)
 
     // Middleware för 404-fel
-    app.use((req, res, next) => {
+    app.use((req, res) => {
       res.status(404).sendFile(join(directoryFullName, 'views', 'errors', '404.html'))
     })
 
     // Middleware för felhantering
-    app.use((err, req, res, next) => {
+    app.use((err, req, res) => {
       console.error(err.stack)
       res.status(500).sendFile(join(directoryFullName, 'views', 'errors', '500.html'))
     })

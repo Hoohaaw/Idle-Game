@@ -48,7 +48,7 @@ export class UserController {
       
 
   async loginUser(req, res) {
-    const { username, password } = req.body
+    const { username } = req.body
 
     try {
       // validate input
@@ -78,7 +78,7 @@ export class UserController {
       return res.redirect('/home')
     } catch (err) {
       // set error flash and redirect back
-      res.cookie('flash', 'Login error, please try again', { maxAge: 5000 })
+      res.cookie('flash', err, 'Login error, please try again', { maxAge: 5000 })
       return res.status(303).redirect('/login')
     }
   }

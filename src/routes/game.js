@@ -1,9 +1,9 @@
-import express, { Router } from 'express';
-import mongoose from 'mongoose';
+import express from 'express';
+// import mongoose from 'mongoose';
 import  authUser from '../middleware/auth.js';
 import { shopItems } from '../js/shop.js';
-import { ResourceModel } from '../models/ResourceModel.js';
-import { InventoryModel } from '../models/InventoryModel.js';
+// import { ResourceModel } from '../models/ResourceModel.js';
+// import { InventoryModel } from '../models/InventoryModel.js';
 import { StatisticsModel } from '../models/StatisticsModel.js';
 import { flashMiddleware } from '../middleware/flash.js';
 
@@ -59,26 +59,26 @@ router.get('/home', authUser, (req, res) => { res.render('./game/dashboard', { l
 
 
 
-async function getResourcesById(userId) {
-  const resources = await ResourceModel.findOne({ user: userId });
-  if (!resources) {
-      throw new Error('Resources not found for user ID: ' + userId);
-  }
-}
-async function getInventoryById(userId) {
-  const inventory = await InventoryModel.findOne({ user: userId });
-  if (!inventory) {
-      throw new Error('Inventory not found for user ID: ' + userId);
-  }
-}
-async function getStatisticsById(userId) {
-  const statistics = await StatisticsModel.findOne({ user: new mongoose.Types.ObjectId(userId) });
-  // console.log('User ID:', user.id, typeof user.id);
+// async function getResourcesById(userId) {
+//   const resources = await ResourceModel.findOne({ user: userId });
+//   if (!resources) {
+//       throw new Error('Resources not found for user ID: ' + userId);
+//   }
+// }
+// async function getInventoryById(userId) {
+//   const inventory = await InventoryModel.findOne({ user: userId });
+//   if (!inventory) {
+//       throw new Error('Inventory not found for user ID: ' + userId);
+//   }
+// }
+// async function getStatisticsById(userId) {
+//   const statistics = await StatisticsModel.findOne({ user: new mongoose.Types.ObjectId(userId) });
+//   // console.log('User ID:', user.id, typeof user.id);
 
-  if (!statistics) {
-      throw new Error('Statistics not found for user ID: ' + userId);
-  }
-  console.log(statistics);
-  return statistics;
-}
+//   if (!statistics) {
+//       throw new Error('Statistics not found for user ID: ' + userId);
+//   }
+//   console.log(statistics);
+//   return statistics;
+// }
 export default router;

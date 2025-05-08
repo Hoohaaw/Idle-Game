@@ -13,6 +13,7 @@ export function authUser(req, res, next) {
     req.user = user // This will be available in your routes
     next()
   } catch (err) {
+    console.error('Token verification failed:', err)
     return res.status(403).redirect('/login')
   }
 }

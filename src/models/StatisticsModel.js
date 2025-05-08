@@ -21,7 +21,6 @@ const statisticsSchema = new mongoose.Schema({
     stoneEarned: { type: Number, default: 0 },
     bronzeEarned: { type: Number, default: 0 },
     ironEarned: { type: Number, default: 0 },
-    goldEarned: { type: Number, default: 0 },
 
     gearFound: { type: Number, default: 0 },
     upgradesDone: { type: Number, default: 0 },

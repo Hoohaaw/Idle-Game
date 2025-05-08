@@ -32,4 +32,6 @@ const teamMemberSchema = new Schema({
         type: Number,
         required: true
     }
-})
+});
+
+export const TeamMemberModel = mongoose.model('TeamMember', teamMemberSchema);

@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express from 'express';
 import { UserController } from '../controllers/UserController.js';
 
 const router = express.Router();
@@ -15,8 +15,6 @@ router.get('/login', (req, res) => {
     res.render('login', { backgroundImg });
 });
 
-
-
 router.post('/login', async (req, res) => {
     try {
         await controller.loginUser(req, res)
@@ -24,11 +22,12 @@ router.post('/login', async (req, res) => {
         console.log(err.message)
     }
 });
+
 router.get('/register', (req, res) => {
     const backgroundImg = controller.getBackgroundImage()
     res.render('register', { backgroundImg });
-
 });
+
 router.post('/register', async (req, res) => {
     try {
         await controller.createUser(req, res)
@@ -36,6 +35,5 @@ router.post('/register', async (req, res) => {
         console.log(err.message)
     }
 });
-
 
 export default router;
