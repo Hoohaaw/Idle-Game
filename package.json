@@ -7,13 +7,14 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon --inspect --env-file=.env src/app.js",
-    "lint": "npx eslint ./src || exit 0",
-    "lint:fix": "npx eslint ./src --fix || exit 0"
+    "lint": "npx eslint ./src",
+    "lint:fix": "npx eslint ./src --fix"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
+    "eslint": "^9.26.0",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
     "jsonwebtoken": "^9.0.2",
