@@ -112,6 +112,20 @@ body {
   background-color: #333;
 }
 
+#world-pagination button:disabled {
+  background-color: #252525;
+  cursor: not-allowed;
+}
+#world-pagination button:hover {
+  background-color: #727ad1;
+}
+#world-pagination button:active {
+  background-color: #ab1a1a;
+}
+#world-pagination button.selected {
+  background-color: #817878;
+}
+
 @media (max-width: 1100px) {
   #dashboard-container {
     flex-direction: column;
