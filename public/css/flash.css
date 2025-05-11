@@ -14,15 +14,6 @@
     z-index: 9999;
 }
 
-/* .alert .alert-success{
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid #3f250b;
-    border-radius: 4px;
-    background-color: #202020;
-    color: aliceblue;
-} */
-
 .alert-success {
     background-color: #202020;
     border-color: #3c763d;
