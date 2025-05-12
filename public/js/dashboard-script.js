@@ -77,13 +77,84 @@ function fireMissionEvent(missionID) {
 }
 
 
-function addMissionToContainer (missionID) {
+// function addMissionToContainer (missionID) {
+//   const missionContainer = document.getElementById("missions");
+//   const missionElement = document.createElement("div");
+//   missionElement.classList.add("mission-item");
+//   missionElement.innerHTML = `<h2>${missionID}</h2><p>Reward:  ${missionID} reward.</p><p>Timer:  "Timer here"</p>`;
+//   missionContainer.appendChild(missionElement);
+// }
+
+// Define mission durations in seconds
+const missionDurations = {
+  "mission-one": 30,
+  "mission-two": 50,
+  "mission-three": 120,
+  "mission-four": 180,
+  "mission-five": 260,
+  "mission-six": 360,
+  "mission-seven": 20,
+  "mission-eight": 20,
+  "mission-nine": 20,
+  "mission-ten": 20,
+  "mission-eleven": 20,
+  "mission-twelve": 20,
+  "mission-thirteen": 20,
+  "mission-fourteen": 20,
+  "mission-fifteen": 20,
+  "mission-sixteen": 20,
+  "mission-seventeen": 20,
+  "mission-eighteen": 20,
+  "Map-one-boss": 600,
+  "Map-two-boss": 3600,
+  "Map-three-boss": 7200,
+  "Map-four-boss": 18000
+};
+
+function addMissionToContainer(missionID) {
+  const duration = missionDurations[missionID];
+
+  if (duration === undefined) {
+    console.error(`No duration set for missionID: ${missionID}`);
+    return;
+  }
+
   const missionContainer = document.getElementById("missions");
   const missionElement = document.createElement("div");
   missionElement.classList.add("mission-item");
-  missionElement.innerHTML = `<h2>${missionID}</h2><p>Reward:  ${missionID} reward.</p><p>Timer:  "Timer here"</p>`;
+
+
+  missionElement.innerHTML = `
+    <h2>${missionID}</h2>
+    <p>Reward: ${missionID} reward.</p>
+    <p>Timer: <span class="timer">${formatTime(duration)}</span></p>
+  `;
+
   missionContainer.appendChild(missionElement);
+
+  const timerElement = missionElement.querySelector(".timer");
+  let timeLeft = duration;
+
+  const interval = setInterval(() => {
+    timeLeft--;
+    timerElement.textContent = formatTime(timeLeft);
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      timerElement.textContent = "Complete!";
+    }
+  }, 1000);
 }
+
+function formatTime(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+  return `${hours.toString().padStart(2, '0')}:` +
+         `${mins.toString().padStart(2, '0')}:` +
+         `${secs.toString().padStart(2, '0')}`;
+}
+
 
 
 
