@@ -7,6 +7,7 @@
     --button-hover-bg: #2a2a2a;
     --button-active-bg: #161616;
     --button-disabled-bg: #3d3d3d;
+    --button-selected-bg: #9c3636;
     --button-text: #e2e2e2;
     --button-focus-outline: #4a90e2;
     --button-disabled-text: #7f7f7f;
@@ -49,6 +50,11 @@ button:disabled {
     background-color: var(--button-disabled-bg);
     color: var(--button-disabled-text);
     cursor: not-allowed;
+}
+
+button.selected {
+    background-color: var(--button-selected-bg);
+    color: var(--button-text);
 }
 
 

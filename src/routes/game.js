@@ -15,7 +15,7 @@ router.use(flashMiddleware);
 
 // Routes for testing the game, not including Auth middleware to skip logging in
 
-// router.get('/home', (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
+router.get('/home', (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
 router.get('/inventory',(req, res) => { res.render('./game/inventory');});
 router.get('/upgrade',(req, res) => { res.render('./game/upgrade');}); 
 router.get('/shop', (req, res) => { const items = shopItems(); res.render('./game/shop', { items });});
@@ -46,7 +46,7 @@ try {
     next(err);
   }
 });
-router.get('/home', authUser, (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
+// router.get('/home', authUser, (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
 // router.get('/upgrade', authUser,(req, res) => { res.render('./game/upgrade');});
 // router.get('/talents', authUser,(req, res) => { res.render('./game/talents');});
 // router.get('/team', authUser,(req, res) => { res.render('./game/team');});

@@ -14,6 +14,7 @@ import cookieParser from 'cookie-parser'
 import { flashMiddleware } from './middleware/flash.js'
 
 
+
   try {
     // Anslut till databasen
     await connectToDatabase(process.env.DB_CONNECTION_STRING)
