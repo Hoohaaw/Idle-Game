@@ -9,7 +9,8 @@
     "dev": "nodemon --inspect --env-file=.env src/app.js",
     "lint": "npx eslint ./src",
     "lint:fix": "npx eslint ./src --fix",
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest"
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
   },
   "dependencies": {
     "@shelf/jest-mongodb": "^5.1.0",
