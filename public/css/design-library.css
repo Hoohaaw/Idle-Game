@@ -12,37 +12,51 @@
     --button-focus-outline: #4a90e2;
     --button-disabled-text: #7f7f7f;
     --border-radius: 8px;
-    --font-family: 'Pirata One', cursive;
+    --font-family: 'Georgia', serif;
 
 }
 
 button {
-   cursor: pointer; 
-   font-size: 16px;
-    padding: 12px;
-    border: 10px solid var(--accent);
-    border-radius: var(--border-radius);
-    color: var(--button-text);
-    background-color: var(--button-bg);
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  background: linear-gradient(to bottom, #5d0000, #a30000 50%, #5d0000);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  color: #f1d6b5;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  text-shadow: 0 1px 2px #000;
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 2px #ffdfb0,
+    inset 0 1px 3px #2c0000,
+    0 0 0 1px #8b5a2b,              /* outer gold edge */
+    0 0 0 2px #2e1a00,              /* darker border depth */
+    0 2px 4px rgba(0, 0, 0, 0.5);   /* soft outer glow */
+  background-clip: padding-box;
+  transition: transform 0.1s ease;
 }
 
 button:hover {
-    color: var(--button-text);
     cursor: pointer; 
-    background-color: var(--button-hover-bg);
+  transform: scale(1.03);
 }
 
 button:active {
-color: var(--button-text);
 cursor: pointer; 
-background-color: var(--button-active-bg);
+
+  transform: scale(0.98);
+  box-shadow:
+    inset 0 0 4px rgba(255, 255, 255, 0.2),
+    0 0 0 1px #b8860b,
+    0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 button:focus {
 color: var(--button-text);
 background-color: var(--button-bg);
-outline: 2px solid var(--button-focus-outline);
+outline: 2px solid var(--accent);
 outline-offset: 2px;
 }
 

@@ -1,35 +1,35 @@
 .alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 3px solid #3f250b;
-    border-radius: 4px;
-    background-color: #202020;
-    color: aliceblue;
-    min-width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 60px;
-    padding-right: 60px;
-    z-index: 9999;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 60px;
+  border: 3px solid #3f250b;
+  border-radius: 4px;
+  background-color: #202020;
+  color: aliceblue;
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 }
+
 
 .alert-success {
     background-color: #202020;
     border-color: #3c763d;
+    min-width: 200px;
 }
 
 .alert-danger {
     background-color: #202020;
     border-color: #a94442;
     min-width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 60px;
-    padding-right: 60px;
 }
 
 .alert-info {
     border-color: #dac02e;
+    min-width: 200px;
 }
