@@ -1,20 +1,20 @@
+// import MissionController from "../../src/controllers/MissionController.js"
+// import express from "express";
+
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("button").forEach((element) => {
-      element.addEventListener("click", () => {
-        fireMissionEvent(element.id);
-      });
+  document.querySelectorAll(".mission-button").forEach((element) => {
+    element.addEventListener("click", () => {
+      showMissionModal(element.id);
     });
   });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const paginationButtons = document.getElementById("world-pagination").querySelectorAll("button");
-    paginationButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            console.log(`Button ${button.id} clicked!`);
-            togglePagination(button.id);
-        });
-    }
-    );
+  const paginationButtons = document.getElementById("world-pagination").querySelectorAll("button");
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log(`Button ${button.id} clicked!`);
+      togglePagination(button.id);
+    });
+  });
 });
 
 const mapOne = document.getElementById("map-one")
@@ -77,34 +77,36 @@ function fireMissionEvent(missionID) {
 }
 
 
-// function addMissionToContainer (missionID) {
-//   const missionContainer = document.getElementById("missions");
-//   const missionElement = document.createElement("div");
-//   missionElement.classList.add("mission-item");
-//   missionElement.innerHTML = `<h2>${missionID}</h2><p>Reward:  ${missionID} reward.</p><p>Timer:  "Timer here"</p>`;
-//   missionContainer.appendChild(missionElement);
-// }
-
 // Define mission durations in seconds
 const missionDurations = {
-  "mission-one": 30,
+  "mission-one": 1,
   "mission-two": 50,
   "mission-three": 120,
   "mission-four": 180,
   "mission-five": 260,
   "mission-six": 360,
-  "mission-seven": 20,
-  "mission-eight": 20,
-  "mission-nine": 20,
-  "mission-ten": 20,
-  "mission-eleven": 20,
-  "mission-twelve": 20,
-  "mission-thirteen": 20,
-  "mission-fourteen": 20,
-  "mission-fifteen": 20,
-  "mission-sixteen": 20,
-  "mission-seventeen": 20,
-  "mission-eighteen": 20,
+
+  "mission-seven": 300,
+  "mission-eight": 600,
+  "mission-nine": 900,
+  "mission-ten": 1200,
+  "mission-eleven": 1500,
+  "mission-twelve": 1800,
+
+  "mission-thirteen": 600,
+  "mission-fourteen": 1200,
+  "mission-fifteen": 1800,
+  "mission-sixteen": 2400,
+  "mission-seventeen": 3000,
+  "mission-eighteen": 3600,
+
+  "mission-nineteen": 900,
+  "mission-twenty": 1800,
+  "mission-twenty-one": 2700,
+  "mission-twenty-two": 3600,
+  "mission-twenty-three": 4500,
+  "mission-twenty-four": 5400,
+
   "Map-one-boss": 600,
   "Map-two-boss": 3600,
   "Map-three-boss": 7200,
@@ -112,17 +114,26 @@ const missionDurations = {
 };
 
 function addMissionToContainer(missionID) {
-  const duration = missionDurations[missionID];
+  const missionContainer = document.getElementById("missions");
 
+  // Check if mission already exists
+  const existingMission = Array.from(missionContainer.children).find(
+    (element) => element.querySelector("h2").textContent === missionID
+  );
+  
+  if (existingMission) { // Don't add duplicate mission
+    console.log(`Mission ${missionID} already exists. Skipping add.`);
+    return; 
+  }
+
+  const duration = missionDurations[missionID];
   if (duration === undefined) {
     console.error(`No duration set for missionID: ${missionID}`);
     return;
   }
 
-  const missionContainer = document.getElementById("missions");
   const missionElement = document.createElement("div");
   missionElement.classList.add("mission-item");
-
 
   missionElement.innerHTML = `
     <h2>${missionID}</h2>
@@ -142,9 +153,14 @@ function addMissionToContainer(missionID) {
     if (timeLeft <= 0) {
       clearInterval(interval);
       timerElement.textContent = "Complete!";
+      missionElement.classList.add("clickable");
+      missionElement.addEventListener("click", () => {
+        showRewardModal(missionID);
+      }), {once: true};
     }
   }, 1000);
 }
+
 
 function formatTime(seconds) {
   const hours = Math.floor(seconds / 3600);
@@ -154,8 +170,6 @@ function formatTime(seconds) {
          `${mins.toString().padStart(2, '0')}:` +
          `${secs.toString().padStart(2, '0')}`;
 }
-
-
 
 
 function togglePagination(buttonPressed) {
@@ -218,7 +232,106 @@ function togglePagination(buttonPressed) {
         mapTwo.style.display = "none";
         mapThree.style.display = "none";
         mapFour.style.display = "block";
-    }
+    }}
+    document.getElementById("close-reward").addEventListener("click", () => {
+  document.getElementById("reward-modal").classList.add("hidden");
+});
 
+function removeMission(missionID) {
+  const missionContainer = document.getElementById("missions");
+  const missionElement = Array.from(missionContainer.children).find(
+    (element) => element.querySelector("h2").textContent === missionID
+  );
 
+  if (missionElement) {
+    missionContainer.removeChild(missionElement);
+  } else {
+    console.error(`Mission ${missionID} not found in the container.`);
+  }
 }
+
+
+function showRewardModal(missionID) {
+  const modal = document.getElementById("reward-modal");
+  const title = document.getElementById("reward-title");
+  const message = document.getElementById("reward-message");
+    const closeButton = document.getElementById("close-reward");
+
+  title.textContent = `${missionID} Complete!`;
+  message.textContent = `You earned rewards from ${missionID}!`;
+
+  modal.classList.remove("hidden");
+
+  closeButton.addEventListener("click", () => {
+    removeMission(missionID);
+    modal.classList.add("hidden");
+  });
+}
+
+
+function showMissionModal(missionID) {
+  const modal = document.getElementById("mission-modal");
+  const title = document.getElementById("mission-title");
+  const message = document.getElementById("mission-description");
+  const closeButton = document.getElementById("close-mission");
+  const startButton = document.getElementById("start-mission");
+
+  title.textContent = `Mission ${missionID}`;
+  message.textContent = `Details about Mission ${missionID}.`;
+
+  modal.classList.remove("hidden");
+
+  closeButton.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+const newStartButton = startButton.cloneNode(true);
+startButton.parentNode.replaceChild(newStartButton, startButton);
+
+newStartButton.addEventListener("click", () => {
+  fireMissionEvent(missionID);
+  modal.classList.add("hidden");
+  console.log(`Mission ${missionID} fired!`);
+});
+}
+
+// async function startMissionDatabase(req, res, next, missionID) {
+//   req.params = {
+//     missionId: missionID
+//   };
+//   req.body = {
+//     missionData: {
+//       description: `Details about Mission ${missionID}.`,
+//       reward: `${missionID} reward.`,
+//       duration: missionDurations[missionID]
+//     }
+//   };
+// }
+
+document.getElementById("mission-database").addEventListener("click", () => {
+  const missionID = document.getElementById("mission-database").dataset.missionId;
+
+  const missionData = {
+    description: "Rescue the princess", // example
+    reward: 1000,
+    duration: 60
+  };
+
+  fetch(`/missions/start/${missionID}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({ missionData })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data.message);
+    })
+    .catch(err => {
+      console.error("Mission start failed:", err);
+    });
+});
+
