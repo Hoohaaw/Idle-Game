@@ -6,15 +6,18 @@ import { shopItems } from '../js/shop.js';
 // import { InventoryModel } from '../models/InventoryModel.js';
 import { StatisticsModel } from '../models/StatisticsModel.js';
 import { flashMiddleware } from '../middleware/flash.js';
+// import { UserController } from '../controllers/UserController.js';
+import { MissionController } from "../controllers/MissionController.js"
 
 
 const router = express.Router();
+
+const missionController = new MissionController();
 
 // Setup middleware in all routes to use flash messages
 router.use(flashMiddleware);
 
 // Routes for testing the game, not including Auth middleware to skip logging in
-
 router.get('/home', (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
 router.get('/inventory',(req, res) => { res.render('./game/inventory');});
 router.get('/upgrade',(req, res) => { res.render('./game/upgrade');}); 
@@ -23,7 +26,7 @@ router.get('/talents',(req, res) => { res.render('./game/talents');});
 router.get('/team',(req, res) => { res.render('./game/team');});
 router.get('/crafting',(req, res) => { res.render('./game/crafting');});
 router.get('/mines',(req, res) => { res.render('./game/mines');});
-router.get('/blessings',(req, res) => { res.render('./game/blessings');});
+router.get('/blessings',(req, res) => { res.render('./game/blessings', { layout: 'layouts/blessings-layout'});});
 router.get('/transcendence',(req, res) => { res.render('./game/transcendence');});
 
 
@@ -46,6 +49,13 @@ try {
     next(err);
   }
 });
+
+// Mission routes
+router.post('/missions/start/:missionId', authUser, missionController.startMission);
+router.post('/missions/complete/:missionId', authUser, missionController.completeMission);
+router.delete('/missions/remove/:missionId', authUser, missionController.removeMission);
+
+
 // router.get('/home', authUser, (req, res) => { res.render('./game/dashboard', { layout: 'layouts/dashboard-layout'});});
 // router.get('/upgrade', authUser,(req, res) => { res.render('./game/upgrade');});
 // router.get('/talents', authUser,(req, res) => { res.render('./game/talents');});
