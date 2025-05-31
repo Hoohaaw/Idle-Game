@@ -13,10 +13,7 @@ export class UserController {
     try {
       const { username, password } = req.body
       await this.validateUserInput(username, password)
-
-      // hash + save user
-      const hashed = await bcrypt.hash(password, 10)
-      const newUser = await RegisterModel.create({ username, password: hashed })
+      const newUser = await RegisterModel.create({ username, password })
 
       // initialize related models
       await ResourceModel.create({ user: newUser._id })
@@ -48,11 +45,18 @@ export class UserController {
       
 
   async loginUser(req, res) {
-    const { username } = req.body
+    const { username, password } = req.body
 
     try {
       // validate input
       const user = await RegisterModel.findOne({ username })
+      const isMatch = await bcrypt.compare(password, user.password)
+
+      if (!isMatch) {
+        res.cookie('flash', 'Invalid credentials', { maxAge: 5000 })
+        return res.status(303).redirect('/login')
+      }
+      
       if (!user) {
         res.cookie('flash', 'Invalid credentials', { maxAge: 5000 })
         return res.status(303).redirect('/login')
@@ -75,7 +79,7 @@ export class UserController {
 
       // Welcome message via cookie
       res.cookie('flash', `Welcome, ${user.username}!`, { maxAge: 5000 })
-      return res.redirect('/home')
+      return res.status(201).redirect('/home')
     } catch (err) {
       // set error flash and redirect back
       res.cookie('flash', err, 'Login error, please try again', { maxAge: 5000 })
