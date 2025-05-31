@@ -8,11 +8,30 @@
 
 </head>
 <body>
+  <!-- Reward Modal -->
+<div id="reward-modal" class="hidden">
+  <div class="modal-content">
+    <h2 id="reward-title">Mission Complete!</h2>
+    <p id="reward-message">You earned XYZ!</p>
+    <button id="close-reward">Claim Reward</button>
+  </div>
+</div>
+
+<!-- Mission Modal -->
+<div id="mission-modal" class="hidden">
+  <div class="modal-content">
+    <h2 id="mission-title">Mission Title</h2>
+    <p id="mission-description">Mission Description</p>
+    <button id="start-mission">Start Mission</button>
+    <button id="close-mission">Close</button>
+  </div>
+</div>
+
   <div id="dashboard-container">
-    <div id="missions">MISSIONS</div>
+    <div id="missions"></div>
     <div id="dashboard">
       <div id="world-pagination">
-        <button id="pagination-1">1</button>
+        <button id="pagination-1" class="selected">1</button>
         <button id="pagination-2">2</button>
         <button id="pagination-3">3</button>
         <button id="pagination-4">4</button>
@@ -20,51 +39,52 @@
      
 <!-- Map One -->
  <div id="map-one">
-<button id="mission-one">Mission One</button>
-<button id="mission-two">Mission Two</button>
-<button id="mission-three">Mission Three</button>
-<button id="mission-four">Mission Four</button>
-<button id="mission-five">Mission Five</button>
-<button id="mission-six">Mission Six</button>
-<button id="Map-one-boss">Final Boss</button>
+<button class="mission-button" id="mission-one">Mission One</button>
+<button class="mission-button" id="mission-two">Mission Two</button>
+<button class="mission-button" id="mission-three">Mission Three</button>
+<button class="mission-button" id="mission-four">Mission Four</button>
+<button class="mission-button" id="mission-five">Mission Five</button>
+<button class="mission-button" id="mission-six">Mission Six</button>
+<button class="mission-button" id="Map-one-boss">Final Boss</button>
 </div>
 
 <!-- Map Two -->
  <div id="map-two">
-<button id="mission-seven">Mission Seven</button>
-<button id="mission-eight">Mission Eight</button>
-<button id="mission-nine">Mission Nine</button>
-<button id="mission-ten">Mission Ten</button>
-<button id="mission-eleven">Mission Eleven</button>
-<button id="mission-twelve">Mission Twelve</button>
-<button id="Map-two-boss">Map Two Boss</button>
+<button class="mission-button" id="mission-seven">Mission Seven</button>
+<button class="mission-button" id="mission-eight">Mission Eight</button>
+<button class="mission-button" id="mission-nine">Mission Nine</button>
+<button class="mission-button" id="mission-ten">Mission Ten</button>
+<button class="mission-button" id="mission-eleven">Mission Eleven</button>
+<button class="mission-button" id="mission-twelve">Mission Twelve</button>
+<button class="mission-button" id="Map-two-boss">Map Two Boss</button>
 </div>
 
 <!-- Map Three -->
  <div id="map-three">
-<button id="mission-thirteen">Mission Thirteen</button>
-<button id="mission-fourteen">Mission Fourteen</button>
-<button id="mission-fifteen">Mission Fifteen</button>
-<button id="mission-sixteen">Mission Sixteen</button>
-<button id="mission-seventeen">Mission Seventeen</button>
-<button id="mission-eighteen">Mission Eighteen</button>
-<button id="Map-three-boss">Map Three Boss</button>
+<button class="mission-button" id="mission-thirteen">Mission Thirteen</button>
+<button class="mission-button" id="mission-fourteen">Mission Fourteen</button>
+<button class="mission-button" id="mission-fifteen">Mission Fifteen</button>
+<button class="mission-button" id="mission-sixteen">Mission Sixteen</button>
+<button class="mission-button" id="mission-seventeen">Mission Seventeen</button>
+<button class="mission-button" id="mission-eighteen">Mission Eighteen</button>
+<button class="mission-button" id="Map-three-boss">Map Three Boss</button>
 </div>
 
 <!-- Map Four -->
  <div id="map-four">
-<button id="mission-nineteen">Mission Nineteen</button>
-<button id="mission-twenty">Mission Twenty</button>
-<button id="mission-twenty-one">Mission Twenty-One</button>
-<button id="mission-twenty-two">Mission Twenty-Two</button>
-<button id="mission-twenty-three">Mission Twenty-Three</button>
-<button id="mission-twenty-four">Mission Twenty-Four</button>
-<button id="Map-four-boss">Map Four Boss</button>
+<button class="mission-button"id="mission-nineteen">Mission Nineteen</button>
+<button class="mission-button"id="mission-twenty">Mission Twenty</button>
+<button class="mission-button"id="mission-twenty-one">Mission Twenty-One</button>
+<button class="mission-button"id="mission-twenty-two">Mission Twenty-Two</button>
+<button class="mission-button"id="mission-twenty-three">Mission Twenty-Three</button>
+<button class="mission-button"id="mission-twenty-four">Mission Twenty-Four</button>
+<button class="mission-button"id="Map-four-boss">Map Four Boss</button>
 </div>
 
     </div>
-    <div id="menu">MENU</div>
   </div>
+
+  <button id="mission-database">SEND MISSION TO DATABASE TEST</button>
   <script src="/js/dashboard-script.js"></script>
 </body>
 </html>
