@@ -272,12 +272,14 @@ function showRewardModal(missionID) {
 function showMissionModal(missionID) {
   const modal = document.getElementById("mission-modal");
   const title = document.getElementById("mission-title");
+  const reward = document.getElementById("mission-reward");
   const message = document.getElementById("mission-description");
   const closeButton = document.getElementById("close-mission");
   const startButton = document.getElementById("start-mission");
 
-  title.textContent = `Mission ${missionID}`;
-  message.textContent = `Details about Mission ${missionID}.`;
+  title.textContent = `${missionID}`;
+  message.textContent = `A coin earning mission for you! Complete the mission to earn rewards.`;
+  reward.innerHTML = `Rewards: <br>Copper coins: 13<br>Silver coins: 7<br>Gold coins: 3<br>Platinum coins: 1`;
 
   modal.classList.remove("hidden");
 
