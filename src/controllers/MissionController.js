@@ -13,7 +13,7 @@ export class MissionController {
 
     try {
       const mission = new MissionModel({
-        user: req.user._id, // from decoded JWT
+        user: req.user._id, 
         mission_id: missionId,
         description: missionData.description,
         reward: missionData.reward,
@@ -44,6 +44,7 @@ export class MissionController {
 
       res.status(200).json({ message: `Mission ${missionId} completed successfully.` });
     } catch (error) {
+      console.error("Error completing mission:", error);
       res.status(500).json({ error: 'Failed to complete mission.' });
     }
   }
@@ -59,6 +60,7 @@ export class MissionController {
 
       res.status(200).json({ message: `Mission ${missionId} removed successfully.` });
     } catch (error) {
+      console.error("Error removing mission:", error);
       res.status(500).json({ error: 'Failed to remove mission.' });
     }
   }
