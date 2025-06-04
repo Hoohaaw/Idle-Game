@@ -7,12 +7,12 @@ const controller = new UserController()
 
 router.get('/', (req, res) => {
     const backgroundImg = controller.getBackgroundImage()
-    res.render('login', { backgroundImg });
+   res.render('login', { layout: 'layouts/account-layout', backgroundImg });
 });
 
 router.get('/login', (req, res) => {
     const backgroundImg = controller.getBackgroundImage()
-    res.render('login', { backgroundImg });
+    res.render('login', { layout: 'layouts/account-layout', backgroundImg });
 });
 
 router.post('/login', async (req, res) => {
@@ -25,7 +25,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/register', (req, res) => {
     const backgroundImg = controller.getBackgroundImage()
-    res.render('register', { backgroundImg });
+    res.render('register', { layout: 'layouts/account-layout', backgroundImg });
 });
 
 router.post('/register', async (req, res) => {
