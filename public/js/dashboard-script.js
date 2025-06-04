@@ -310,30 +310,30 @@ newStartButton.addEventListener("click", () => {
 //   };
 // }
 
-document.getElementById("mission-database").addEventListener("click", () => {
-  const missionID = document.getElementById("mission-database").dataset.missionId;
+// document.getElementById("mission-database").addEventListener("click", () => {
+//   const missionID = document.getElementById("mission-database").dataset.missionId;
 
-  const missionData = {
-    description: "Rescue the princess", // example
-    reward: 1000,
-    duration: 60
-  };
+//   const missionData = {
+//     description: "Rescue the princess", // example
+//     reward: 1000,
+//     duration: 60
+//   };
 
-  fetch(`/missions/start/${missionID}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    credentials: "include",
-    body: JSON.stringify({ missionData })
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data.message);
-    })
-    .catch(err => {
-      console.error("Mission start failed:", err);
-    });
-});
+//   fetch(`/missions/start/${missionID}`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json"
+//     },
+//     credentials: "include",
+//     body: JSON.stringify({ missionData })
+//   })
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data.message);
+//     })
+//     .catch(err => {
+//       console.error("Mission start failed:", err);
+//     });
+// });
 
