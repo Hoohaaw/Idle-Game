@@ -64,7 +64,7 @@ router.get('/shop', authUser, (req, res) => { const items = shopItems(); res.ren
 router.get('/inventory', authUser,(req, res) => { res.render('./game/inventory');});
 router.get('/crafting', authUser,(req, res) => { res.render('./game/crafting');});
 router.get('/mines', authUser,(req, res) => { res.render('./game/mines');});
-router.get('/blessings', authUser,(req, res) => { res.render('./game/blessings');});
+router.get('/blessings', authUser, (req, res) => { res.render('./game/blessings', { layout: 'layouts/blessings-layout'});});
 router.get('/transcendence', authUser,(req, res) => { res.render('./game/transcendence');});
 
 

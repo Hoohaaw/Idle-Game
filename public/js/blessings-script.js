@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const maxPointsPerTalent = 5;
   const maxPointsPerRow = 5;
 
+  console.log('Blessings script loaded');
+
   const pointsLeftSpan = document.getElementById('points-left');
   const treesContainer = document.getElementById('talent-trees-container');
 
